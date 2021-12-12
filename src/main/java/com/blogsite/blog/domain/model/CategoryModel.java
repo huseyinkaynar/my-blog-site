@@ -30,7 +30,7 @@ public class CategoryModel extends ItemModel {
     private String content;
 
     @ManyToMany(mappedBy = "categories")
-    List<PostModel> posts;
+    private List<PostModel> posts;
 
     public void setTitle(String title) {
         addChangeAttribute(CategoryModel.TITLE);
