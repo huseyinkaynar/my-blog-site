@@ -30,7 +30,7 @@ public class PostCommentModel extends ItemModel {
     private String published;
     private LocalDateTime createdAt;
     private LocalDateTime publishedAt;
-    @Lob
+
     private String content;
 
     @ManyToOne

@@ -3,11 +3,9 @@ package com.blogsite.blog.domain.model;
 import com.blogsite.blog.domain.constant.DomainConstant;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author hkaynar on 09.12.2021
@@ -26,11 +24,11 @@ public class CategoryModel extends ItemModel {
     private String title;
     private String metaTitle;
     private String slug;
-    @Lob
+
     private String content;
 
     @ManyToMany(mappedBy = "categories")
-    private List<PostModel> posts;
+    private Set<PostModel> posts;
 
     public void setTitle(String title) {
         addChangeAttribute(CategoryModel.TITLE);
@@ -53,7 +51,7 @@ public class CategoryModel extends ItemModel {
     }
 
 
-    public void setPosts(List<PostModel> posts) {
+    public void setPosts(Set<PostModel> posts) {
         addChangeAttribute(CategoryModel.POSTS);
         this.posts = posts;
     }

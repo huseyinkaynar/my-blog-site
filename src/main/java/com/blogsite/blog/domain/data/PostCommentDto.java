@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  * @author hkaynar on 12.12.2021
  */
 @Data
-public class PostCommentDto {
+public class PostCommentDto extends BaseDto{
     private String title;
     private String published;
     private LocalDateTime createdAt;

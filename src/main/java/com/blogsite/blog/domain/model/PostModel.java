@@ -6,6 +6,7 @@ import lombok.Getter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author hkaynar on 09.12.2021
@@ -39,23 +40,23 @@ public class PostModel extends ItemModel {
     private String summary;
     private String published;
     private LocalDateTime publishedAt;
-    @Lob
+
     private String content;
 
     @ManyToMany
-    private List<CategoryModel> categories;
+    private Set<CategoryModel> categories;
 
     @ManyToMany
-    private List<TagModel> tags;
+    private Set<TagModel> tags;
 
     @ManyToOne
     private UserModel user;
 
     @OneToMany
-    private List<PostCommentModel> postComments;
+    private Set<PostCommentModel> postComments;
 
     @OneToMany
-    private List<PostMetaModel> postMetas;
+    private Set<PostMetaModel> postMetas;
 
 
 
@@ -99,12 +100,12 @@ public class PostModel extends ItemModel {
         this.parentId = parentId;
     }
 
-    public void setCategories(List<CategoryModel> categories) {
+    public void setCategories(Set<CategoryModel> categories) {
         addChangeAttribute(PostModel.CATEGORIES);
         this.categories = categories;
     }
 
-    public void setTags(List<TagModel> tags) {
+    public void setTags(Set<TagModel> tags) {
         addChangeAttribute(PostModel.TAGS);
         this.tags = tags;
     }
@@ -113,11 +114,11 @@ public class PostModel extends ItemModel {
         addChangeAttribute(PostModel.USER);
         this.user = user;
     }
-    public void setPostComments(List<PostCommentModel> postComments) {
+    public void setPostComments(Set<PostCommentModel> postComments) {
         addChangeAttribute(PostModel.POSTCOMMENTS);
         this.postComments = postComments;
     }
-    public void setPostMetas(List<PostMetaModel> postMetas) {
+    public void setPostMetas(Set<PostMetaModel> postMetas) {
         addChangeAttribute(PostModel.POSTMETAS);
         this.postMetas = postMetas;
     }

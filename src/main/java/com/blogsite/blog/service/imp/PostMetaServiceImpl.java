@@ -2,6 +2,7 @@ package com.blogsite.blog.service.imp;
 
 import com.blogsite.blog.domain.data.PostMetaDto;
 import com.blogsite.blog.domain.model.PostMetaModel;
+import com.blogsite.blog.domain.model.PostModel;
 import com.blogsite.blog.repository.PostMetaDao;
 import com.blogsite.blog.service.ModelService;
 import com.blogsite.blog.service.PostMetaService;
@@ -49,6 +50,7 @@ public class PostMetaServiceImpl implements PostMetaService {
     @Override
     public void update(PostMetaDto postMetaDto, Long id) {
         var postMeta = postMetaDao.getPostMetaModelById(id);
+        postMeta.setPost(modelMapper.map(postMetaDto.getPost(), PostModel.class));
         modelMapper.map(postMetaDto, postMeta);
         modelService.save(postMeta);
     }

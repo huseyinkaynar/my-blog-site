@@ -2,6 +2,7 @@ package com.blogsite.blog.service.imp;
 
 import com.blogsite.blog.domain.data.PostDto;
 import com.blogsite.blog.domain.model.PostModel;
+import com.blogsite.blog.domain.model.UserModel;
 import com.blogsite.blog.repository.PostDao;
 import com.blogsite.blog.service.ModelService;
 import com.blogsite.blog.service.PostService;
@@ -49,6 +50,7 @@ public class PostServiceImp implements PostService {
     @Override
     public void update(PostDto postDto, Long id) {
         var post = postDao.getPostModelById(id);
+        post.setUser(modelMapper.map(postDto.getUser(), UserModel.class));
         modelMapper.map(postDto, post);
         modelService.save(post);
     }

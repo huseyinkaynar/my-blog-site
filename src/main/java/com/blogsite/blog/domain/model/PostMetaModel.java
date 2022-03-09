@@ -20,7 +20,7 @@ public class PostMetaModel extends ItemModel {
     public static final String POST = "post";
 
     private String key;
-    @Lob
+
     private String content;
 
 
